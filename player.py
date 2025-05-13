@@ -46,3 +46,6 @@ class Player:
 
     def draw(self, screen):
         pygame.draw.rect(screen, self.color, self.rect)
+    def reset_position(self):
+        self.rect.topleft = (100, 100)
+        self.vel_y = 0
