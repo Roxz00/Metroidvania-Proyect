@@ -7,10 +7,10 @@ class Level:
 
     def load_level(self, number):
         levels = {
-            1: ([pygame.Rect(0, 400, 800, 50), pygame.Rect(200, 300, 150, 20)], pygame.Rect(700, 350, 50, 50)),
+            1: ([pygame.Rect(0, 400, 800, 50), pygame.Rect(200, 300, 150, 20)], pygame.Rect(500, 350, 50, 50)),
             2: ([pygame.Rect(0, 450, 800, 50), pygame.Rect(300, 370, 100, 20), pygame.Rect(500, 290, 120, 20)], pygame.Rect(750, 400, 50, 50)),
             3: ([pygame.Rect(0, 500, 800, 50), pygame.Rect(200, 420, 100, 20), pygame.Rect(400, 360, 100, 20), pygame.Rect(600, 300, 100, 20)], pygame.Rect(750, 450, 50, 50)),
-            # Niveles 4 a 10 similares...
+            
         }
         if number in levels:
             return levels[number]

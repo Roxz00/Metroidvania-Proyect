@@ -4,7 +4,7 @@ from player import Player
 from level import Level
 
 pygame.init()
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Metroidvania")
 clock = pygame.time.Clock()
 
