@@ -2,13 +2,22 @@ import pygame
 from settings import SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Player:
-    def __init__(self):
-        self.rect = pygame.Rect(100, SCREEN_HEIGHT - 150, 50, 50)
-        self.vel_y = 0
-        self.on_ground = False
+    def __init__(self, x, y):
+        self.rect = pygame.Rect(x, y, 40, 40)
+        self.vel_y = 0  # Cambiado de velocity_y a vel_y para mantener consistencia
+        self.jumping = False
+        self.on_ground = True  # Añadido inicialización de on_ground
+
+    def handle_input(self, event):
+        # Manejo de eventos de teclado
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and self.on_ground:
+                self.vel_y = -15
+                self.on_ground = False
 
     def update(self, platforms):
-        self.vel_y += 1  # Gravedad
+        # Gravedad
+        self.vel_y += 1
         self.rect.y += self.vel_y
 
         # Colisiones verticales
@@ -21,15 +30,10 @@ class Player:
 
         # Movimiento lateral básico
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_a]:  # Cambiado de K_LEFT a K_a
             self.rect.x -= 5
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_d]:  # Cambiado de K_RIGHT a K_d
             self.rect.x += 5
-
-        # Saltar solo si está en el suelo
-        if keys[pygame.K_SPACE] and self.on_ground:
-            self.vel_y = -15
-            self.on_ground = False
 
     def reset_position(self):
         self.rect.topleft = (100, SCREEN_HEIGHT - 150)
